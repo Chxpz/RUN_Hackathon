@@ -39,7 +39,7 @@ app.post('/createNFT', async (req, res) => {
 
   if (!createdNFT) return res.status(500).json({message: 'Wallet not found.'})
 
-  return res.status(200).json({message: createdNFT});
+  return res.status(200).json(createdNFT);
 
 });
 

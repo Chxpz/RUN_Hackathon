@@ -27,7 +27,8 @@ export default function AlertDialogSlide({ content, action }) {
   useEffect(() => {
     if(open) action().then((response) => {
       if(response.message) setMessage(response.message);
-      else setMessage('Creating NFT')
+      else { setMessage('NFT created'); console.log(response) }
+      
     })
   }, [open]);
 
