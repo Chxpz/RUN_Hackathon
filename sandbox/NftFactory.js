@@ -1,24 +1,39 @@
 const NFT = require('./NFT.js')
 const Run = require('run-sdk')
+const NFTClass = "0280b1f73f3051f5a9658462bf7f2758afba008c5933902d24100361e8054731_o1" //"3608842326a8ef67ab3d3e7f4efebcd729eb72a6409cd0cf892836b14781e08b_o1" //Somente deve estar vazio na primeira passagem: criação da classe
 
 async function createNFT(name, author, image, owner, additionalData) {
-    const run = new Run({ network: 'mock' })
+    // const run = new Run({ network: 'mock' })
+    //----
+    const run = new Run({
+        trust: '*',
+        owner: 'KxYfry5GArjUuJEJB4SgdJ6ZSttQ5FJ5bs5gREYnX9YscMSDD2fC',
+        purse: 'KyMiR17yt8pdG8NiydJcpnP3BD5tLF42bzTyrnpz6FMgBUDGjEMx',
+        network: 'main'
+    });
 
-    //Fazendo o deploy da Classe
-    run.deploy(NFT)
-    await run.sync()
-    console.log(NFT.location)
+    //----
 
+    let classLocation
+
+    if (NFTClass.length == 0) {
+        //Fazendo o deploy da Classe
+        run.deploy(NFT)
+        await run.sync()
+        classLocation = NFT.location
+    } else {
+        classLocation = NFTClass
+    }
     //localizando a classe
-    const nftContract = await run.load(NFT.location)
+
+    const nftContract = await run.load(classLocation)
     await nftContract.sync()
 
     //Criando um novo NFT
     let nft = new nftContract(name, author, image, owner, additionalData)
-    nft.sync()
+    await nft.sync()
 
-    //exibindo no console
-    console.log({nft})
+
 
     return nft
 }

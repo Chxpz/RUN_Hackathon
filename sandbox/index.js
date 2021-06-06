@@ -24,32 +24,27 @@ async function main() {
 
     app.post('/createNFT', async (request, response) => {
 
-        const incomingNFT = request.body;
+        console.log(request.body)
 
-        let name = incomingNFT['Name']
-        let author = incomingNFT['Author']
-        let image = incomingNFT['Image']
-        let owner = incomingNFT['Owner']
-        let additionalData = incomingNFT['AdditionalData']
+        const {name, author, image, owner, additionalData} = request.body;
 
-        console.log(name, author, image, owner)
+        let createdNFT //Objeto que vai receber o retorno do NFTCreate
 
         //Call NFT Factory Class
-        let nft = NFTFactory.createNFT("Rodrigo", "Bezerra", "C:\img.jpg", "03a93358355eb29c49c4493948238bb984463c6963ea2c48f3d5a280b285528dec", "{q:1, w:2}").then(nft =>{})
-
-        console.log(nft)
-
-        let createdNFT = {
-            NFTLocation: nft.location,
-            NftObject: nft
-        }
+        let nft = await NFTFactory.createNFT(name, author, image, owner, additionalData).then(nft => {
+            console.log('Retorno do Create NFT: ', nft)
+            createdNFT = {
+                NFTLocation: nft.location,
+                NftObject: nft
+            }
+        })
 
         if (!createdNFT) {
             response.status(500).send('Wallet not found.')
         } else {
             response.json(createdNFT);
         }
-    }); 
+    });
 
     app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
 }

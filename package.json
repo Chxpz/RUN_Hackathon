@@ -1,30 +1,44 @@
 {
-  "name": "run_hackathon",
-  "version": "1.0.0",
-  "description": "Project to attend RUN Hackaton - NFT Marketplace",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chxpz/RUN_Hackathon.git"
-  },
-  "keywords": [
-    "NFT",
-    "RUN",
-    "BITCOINSV"
-  ],
-  "author": "Kryptonians",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Chxpz/RUN_Hackathon/issues"
-  },
-  "homepage": "https://github.com/Chxpz/RUN_Hackathon#readme",
+  "name": "kryptonians",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "run-sdk": "^0.6.24"
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "run-sdk": "^0.6.24",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
