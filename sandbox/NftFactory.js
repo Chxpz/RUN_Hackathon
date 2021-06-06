@@ -25,7 +25,6 @@ async function createNFT(name, author, image, owner, additionalData) {
         classLocation = NFTClass
     }
     //localizando a classe
-
     const nftContract = await run.load(classLocation)
     await nftContract.sync()
 
