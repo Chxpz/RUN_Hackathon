@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import krypto from './krypto.png';
 import avatar1 from './avatars/avatar1.svg';
 import avatar2 from './avatars/avatar2.svg';
@@ -10,6 +10,7 @@ import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Sliders from './components/Sliders';
 import Dialog from './components/Dialog';
+import MoneyButton from '@moneybutton/react-money-button'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
   const [selected, setSelected] = useState();
   const [state, setState] = useState(initialState);
   const [points, setPoints] = useState(20);
+  const [display, setDisplay] = useState(false);
   const [{kryptonian, author, id}, setFields] = useState(initialFields);
 
   const changeField = e => {
@@ -58,7 +60,7 @@ function App() {
 
         })
 			})
-			.then((response) => response.json())
+			.then((response) => { if(response.status === 200) setDisplay(false); return response.json()})
   }
 
   return (
@@ -96,7 +98,17 @@ function App() {
             </div>
             )}
         </div>
-        <Dialog content="Go Kryptonian!" action={createNFT}/>
+        <div style={display ? { display: 'block' } : { display: 'none'}}><Dialog content="Go Kryptonian!" action={createNFT}/></div>
+        <div style={display ? { display: 'none' } : { display: 'block'}}>
+          <MoneyButton
+            to='48272@moneybutton.com'
+            amount='0.01'
+            currency='USD'
+            onPayment={() => setDisplay(true)}
+            label='Pay'
+            />
+        </div>
+
       </main>
     </div>
   );

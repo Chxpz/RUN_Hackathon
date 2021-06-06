@@ -13,7 +13,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide({ content, action }) {
   const [open, setOpen] = React.useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('Loading... wait a minute');
 
 
   const handleClickOpen = () => {
@@ -22,12 +22,14 @@ export default function AlertDialogSlide({ content, action }) {
 
   const handleClose = () => {
     setOpen(false);
+    setMessage('Loading... wait a minute')
   };
 
   useEffect(() => {
     if(open) action().then((response) => {
+      console.log(response);
       if(response.message) setMessage(response.message);
-      else { setMessage('NFT created'); console.log(response) }
+      else setMessage('NFT created');
       
     })
   }, [open]);

@@ -21,7 +21,6 @@ app.post('/createNFT', async (req, res) => {
 
 
   const {name, author, image, owner, additionalData, points} = req.body;
-  console.log(additionalData)
   let createdNFT //Objeto que vai receber o retorno do NFTCreate
 
   if(name === '' || author === '' || owner === '') return res.status(500).json({message: 'You must fill all the fields'})
