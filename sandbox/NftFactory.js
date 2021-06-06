@@ -1,6 +1,6 @@
 const NFT = require('./NFT.js')
 const Run = require('run-sdk')
-const NFTClass = "0280b1f73f3051f5a9658462bf7f2758afba008c5933902d24100361e8054731_o1" //"3608842326a8ef67ab3d3e7f4efebcd729eb72a6409cd0cf892836b14781e08b_o1" //Somente deve estar vazio na primeira passagem: criação da classe
+const NFTClass = "b4116b2e198fa6d568d33225d5ce5e1bf539b7c5cb544efdaab05cef727b5c39_o1"; //"3608842326a8ef67ab3d3e7f4efebcd729eb72a6409cd0cf892836b14781e08b_o1" //Somente deve estar vazio na primeira passagem: criação da classe
 
 async function createNFT(name, author, image, owner, additionalData) {
     // const run = new Run({ network: 'mock' })
@@ -21,6 +21,8 @@ async function createNFT(name, author, image, owner, additionalData) {
         run.deploy(NFT)
         await run.sync()
         classLocation = NFT.location
+        //console.log(NFT.location)
+        
     } else {
         classLocation = NFTClass
     }
@@ -37,7 +39,7 @@ async function createNFT(name, author, image, owner, additionalData) {
     return nft
 }
 module.exports = { createNFT }
-
+//createNFT('name', 'author', 'image', '1Pbz4ygHBs42k7u68CC386se3UbwStJnqr', { state: { Power: 7, Shield: 7, Speed: 6 } })
 
 // createNFT("Rodrigo", "Bezerra", "C:\img.jpg", "03a93358355eb29c49c4493948238bb984463c6963ea2c48f3d5a280b285528dec", "{q:1, w:2}")
 // privkey: 'cQ45fxMY8JPF9V6rLnQnohpkMPtWCm6TfzdHmDR4t9iCzzyKu5Ur',
