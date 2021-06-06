@@ -1,12 +1,13 @@
 const Run = require('run-sdk')
 
-class Nft extends Jig{
+class NftAvatar extends Jig{
     init(name, author, image, owner, additionalData) {
         this.metadata = {
             name,
             author,
             image,
-            additionalData
+            additionalData,
+            emoji: '👤'
         }
         this.owner = owner
     }
@@ -15,4 +16,4 @@ class Nft extends Jig{
     }
 }
 
-module.exports = Nft
+module.exports = NftAvatar
