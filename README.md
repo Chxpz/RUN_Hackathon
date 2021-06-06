@@ -16,7 +16,7 @@ You will need a Money Button Account :https://www.moneybutton.com/)
 
 
 Team members:
-Luis Bonifacio (luis@codeshop.ai)
-Rafael Carvalho (rafael@codeshop.ai)
-Mario Duarte (mario@codeshop.ai)
-Rodrigo Bezerra (rodrigo@codeshop.ai)
+- Luis Bonifacio (luis@codeshop.ai)
+- Rafael Carvalho (rafael@codeshop.ai)
+- Mario Duarte (mario@codeshop.ai)
+- Rodrigo Bezerra (rodrigo@codeshop.ai)
